@@ -10,6 +10,17 @@ describe('routes', () => {
   });
 
   it('POSTS a new cry', async () => {
+    const cry = {
+      name: 'DJ',
+      cry: true,
+    };
 
+    const res = await (await request(app).post('api/v1/alchemy-cry-lab')).send(cry);
+
+    expect(res.body).toEqual({
+      id: '1',
+      date: '07-28-2021'
+      ...cry,
+    });
   });
 });
