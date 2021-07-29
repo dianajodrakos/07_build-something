@@ -10,11 +10,9 @@ describe('routes', () => {
   });
 
   it('POSTS a new cry', async () => {
-    const currentDate = new Date().toISOString().slice(0, 10);
     const cry = {
       name: 'DJ',
       cry: true,
-      date: currentDate
     };
 
     const res = await request(app)
@@ -28,7 +26,19 @@ describe('routes', () => {
   });
 
   it('GETS all crys', async () => {
+    const cry1 = await Cry.create({
+      name: 'DJ',
+      cry: false,
+    });
 
+    const cry2 = await Cry.create({
+      name: 'Anonymous',
+      cry: true,
+    });
+
+    const res = await request(app).get('/api/v1/alchemy-cry-lab');
+
+    expect(res.body).toEqual([cry1, cry2]);
   });
 
 });
