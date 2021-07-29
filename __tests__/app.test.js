@@ -2,6 +2,9 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import Cry from '../lib/models/Cry.js';
+
+const currentDate = new Date().toISOString().slice(0, 10);
 
 describe('routes', () => {
   beforeEach(() => {
@@ -9,11 +12,9 @@ describe('routes', () => {
   });
 
   it('POSTS a new cry', async () => {
-    const currentDate = new Date().toISOString().slice(0, 10);
     const cry = {
       name: 'DJ',
       cry: true,
-      date: currentDate
     };
 
     const res = await request(app)
@@ -22,7 +23,36 @@ describe('routes', () => {
 
     expect(res.body).toEqual({
       id: '1',
+      date: currentDate,
       ...cry,
     });
   });
+
+  it('GETS all crys', async () => {
+    const cry1 = await Cry.create({
+      name: 'DJ',
+      cry: false,
+    });
+
+    const cry2 = await Cry.create({
+      name: 'Anonymous',
+      cry: true,
+    });
+
+    const res = await request(app).get('/api/v1/alchemy-cry-lab');
+
+    expect(res.body).toEqual([
+      {
+        id: 1,
+        date: currentDate,
+        ...cry1
+      },
+      {
+        id: 2,
+        date: currentDate,
+        ...cry2
+      }
+    ]);
+  });
+
 });
