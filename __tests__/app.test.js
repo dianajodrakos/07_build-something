@@ -129,4 +129,8 @@ describe('routes', () => {
     expect(res.body).toEqual(updatedEntry);
   });
 
+  it('deletes an entry by id', async () => {
+
+  });
+
 });
