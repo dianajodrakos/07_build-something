@@ -78,7 +78,23 @@ describe('routes', () => {
   });
 
   it('updates a cry status by id', async () => {
+    const entry = await Cry.create({
+      name: 'DJ',
+      cry: false,
+    });
 
+    const updatedEntry = {
+      id: entry.id,
+      name: 'DJ',
+      cry: true,
+      date: entry.date
+    };
+
+    const res = await request(app)
+      .put(`api/v1/alchemy-cry-lab/${entry.id}`)
+      .send({ cry: true });
+
+    expect(res.body).toEqual(updatedEntry);
   });
 
 });
