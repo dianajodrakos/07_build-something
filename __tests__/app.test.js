@@ -91,8 +91,7 @@ describe('routes', () => {
     };
 
     const res = await request(app)
-      .put(`api/v1/alchemy-cry-lab/${entry.id}`)
-      .send({ cry: true });
+      .put(`api/v1/alchemy-cry-lab/${entry.id}`);
 
     expect(res.body).toEqual(updatedEntry);
   });
