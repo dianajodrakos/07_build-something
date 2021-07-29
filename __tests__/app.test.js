@@ -78,7 +78,7 @@ describe('routes', () => {
 
     expect(res.body).toEqual([cry1, cry2]);
   });
-  
+
 
   it('GETS all crys from today', async () => {
     const cry1 = await Cry.create({
