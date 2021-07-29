@@ -2,6 +2,7 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import Cry from './models/Cry.js';
 
 describe('routes', () => {
   beforeEach(() => {
@@ -25,4 +26,9 @@ describe('routes', () => {
       ...cry,
     });
   });
+
+  it('GETS all crys', async () => {
+
+  });
+
 });
