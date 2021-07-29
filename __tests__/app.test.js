@@ -124,7 +124,7 @@ describe('routes', () => {
     };
 
     const res = await request(app)
-      .put(`api/v1/alchemy-cry-lab/${entry.id}`);
+      .put(`/api/v1/alchemy-cry-lab/update/${entry.id}`);
 
     expect(res.body).toEqual(updatedEntry);
   });
