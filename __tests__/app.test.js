@@ -63,11 +63,23 @@ describe('routes', () => {
   });
 
 
+  it('GETS an entry by its id', async () => {
+    const cry = await Cry.create({
+      name: 'DJ',
+      cry: false,
+    });
+    const res = await request(app).get(`/api/v1/alchemy-cry-lab/entry/${cry.id}`);
+
+    expect(res.body).toEqual(cry);
+  });
+
+
   it('GETS all entries from today', async () => {
     const cry1 = await Cry.create({
       name: 'DJ',
       cry: false,
     });
+
 
     const cry2 = await Cry.create({
       name: 'Anonymous',
