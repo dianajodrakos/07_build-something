@@ -1,8 +1,8 @@
-import pool from '../lib/utils/pool.js';
-import setup from '../data/setup.js';
-import request from 'supertest';
-import app from '../lib/app.js';
-import Cry from '../lib/models/Cry.js';
+const pool = require('../lib/utils/pool.js');
+const setup = require('../data/setup.js');
+const request = require('supertest');
+const app = require('../lib/app.js');
+const Cry = require('../lib/models/Cry.js');
 
 const currentDate = new Date().toISOString().slice(0, 10);
 
