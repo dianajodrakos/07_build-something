@@ -2,7 +2,9 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
-import Cry from './models/Cry.js';
+import Cry from '../lib/models/Cry.js';
+
+const currentDate = new Date().toISOString().slice(0, 10);
 
 describe('routes', () => {
   beforeEach(() => {
@@ -21,6 +23,7 @@ describe('routes', () => {
 
     expect(res.body).toEqual({
       id: '1',
+      date: currentDate,
       ...cry,
     });
   });
@@ -38,7 +41,18 @@ describe('routes', () => {
 
     const res = await request(app).get('/api/v1/alchemy-cry-lab');
 
-    expect(res.body).toEqual([cry1, cry2]);
+    expect(res.body).toEqual([
+      {
+        id: 1,
+        date: currentDate,
+        ...cry1
+      },
+      {
+        id: 2,
+        date: currentDate,
+        ...cry2
+      }
+    ]);
   });
 
 });
