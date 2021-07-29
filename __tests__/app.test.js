@@ -77,4 +77,8 @@ describe('routes', () => {
     expect(res.body).not.toContain(cry1);
   });
 
+  it('updates a cry status by id', async () => {
+
+  });
+
 });
