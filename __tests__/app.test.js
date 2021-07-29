@@ -55,4 +55,8 @@ describe('routes', () => {
     ]);
   });
 
+  it('GETS all crys from today', async () => {
+
+  });
+
 });
