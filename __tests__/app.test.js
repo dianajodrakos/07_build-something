@@ -77,4 +77,8 @@ describe('routes', () => {
     expect(res.body).not.toContain(cry1);
   });
 
+  it('GETS all crys', async () => {
+
+  });
+
 });
