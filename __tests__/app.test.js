@@ -74,6 +74,7 @@ describe('routes', () => {
     const res = await request(app).get(`/api/v1/alchemy-cry-lab/${currentDate}/crys`);
 
     expect(res.body).toEqual([cry2]);
+    expect(res.body).not.toContain(cry1);
   });
 
 });
