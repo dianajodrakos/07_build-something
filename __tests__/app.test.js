@@ -130,7 +130,14 @@ describe('routes', () => {
   });
 
   it('deletes an entry by id', async () => {
+    const entry = await Cry.create({
+      name: 'DJ',
+      cry: false,
+    });
 
+    const res = await request(app).delete(`/api/v1/alchemy-cry-lab/${entry.id}`);
+
+    expect(res.body).toEqual(`Entry ${entry.id} was deleted.`);
   });
 
 });
