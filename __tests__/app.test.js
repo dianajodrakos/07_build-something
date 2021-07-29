@@ -135,9 +135,9 @@ describe('routes', () => {
       cry: false,
     });
 
-    const res = await request(app).delete(`/api/v1/alchemy-cry-lab/${entry.id}`);
+    const res = await request(app).delete(`/api/v1/alchemy-cry-lab/delete/${entry.id}`);
 
-    expect(res.body).toEqual(`Entry ${entry.id} was deleted.`);
+    expect(res.body).toEqual({ 'message': 'Entry 1 was deleted.' });
   });
 
 });
