@@ -19,10 +19,9 @@ describe('routes', () => {
     const res = await request(app)
       .post('/api/v1/alchemy-cry-lab')
       .send(cry);
-    console.log(res);
+
     expect(res.body).toEqual({
       id: '1',
-      date: '07-28-2021',
       ...cry,
     });
   });
