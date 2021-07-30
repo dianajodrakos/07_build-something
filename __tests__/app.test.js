@@ -2,7 +2,7 @@ const pool = require('../lib/utils/pool.js');
 const setup = require('../data/setup.js');
 const request = require('supertest');
 const app = require('../lib/app.js');
-const Cry = require('../lib/models/Cry.js');
+const CryService = require('../lib/services/CryServices.js');
 
 const currentDate = new Date().toISOString().slice(0, 10);
 
@@ -35,12 +35,12 @@ describe('routes', () => {
   });
   
   it('GETS all entries', async () => {
-    const cry1 = await Cry.create({
+    const cry1 = await CryService.createEntry({
       name: 'DJ',
       cry: false,
     });
     
-    const cry2 = await Cry.create({
+    const cry2 = await CryService.createEntry({
       name: 'Anonymous',
       cry: true,
     });
@@ -52,12 +52,12 @@ describe('routes', () => {
   
 
   it('GETS all crys', async () => {
-    const cry1 = await Cry.create({
+    const cry1 = await CryService.createEntry({
       name: 'DJ',
       cry: false,
     });
 
-    const cry2 = await Cry.create({
+    const cry2 = await CryService.createEntry({
       name: 'Anonymous',
       cry: true,
     });
@@ -70,7 +70,7 @@ describe('routes', () => {
 
 
   it('GETS an entry by its id', async () => {
-    const cry = await Cry.create({
+    const cry = await CryService.createEntry({
       name: 'DJ',
       cry: false,
     });
@@ -81,13 +81,13 @@ describe('routes', () => {
 
 
   it('GETS all entries from today', async () => {
-    const cry1 = await Cry.create({
+    const cry1 = await CryService.createEntry({
       name: 'DJ',
       cry: false,
     });
 
 
-    const cry2 = await Cry.create({
+    const cry2 = await CryService.createEntry({
       name: 'Anonymous',
       cry: true,
     });
@@ -99,12 +99,12 @@ describe('routes', () => {
 
 
   it('GETS all crys from today', async () => {
-    const cry1 = await Cry.create({
+    const cry1 = await CryService.createEntry({
       name: 'DJ',
       cry: false,
     });
 
-    const cry2 = await Cry.create({
+    const cry2 = await CryService.createEntry({
       name: 'Anonymous',
       cry: true,
     });
@@ -117,7 +117,7 @@ describe('routes', () => {
   
 
   it('updates a cry status by id', async () => {
-    const entry = await Cry.create({
+    const entry = await CryService.createEntry({
       name: 'DJ',
       cry: false,
     });
@@ -136,7 +136,7 @@ describe('routes', () => {
   });
 
   it('deletes an entry by id', async () => {
-    const entry = await Cry.create({
+    const entry = await CryService.createEntry({
       name: 'DJ',
       cry: false,
     });
