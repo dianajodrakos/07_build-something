@@ -17,6 +17,7 @@ describe('routes', () => {
     return setup(pool);
   });
 
+
   it('POSTS a new cry', async () => {
     const cry = {
       name: 'DJ',
@@ -33,7 +34,8 @@ describe('routes', () => {
       ...cry,
     });
   });
-  
+
+
   it('GETS all entries', async () => {
     const cry1 = await CryService.createEntry({
       name: 'DJ',
@@ -49,7 +51,7 @@ describe('routes', () => {
     
     expect(res.body).toEqual([cry1, cry2]);
   });
-  
+
 
   it('GETS all crys', async () => {
     const cry1 = await CryService.createEntry({
