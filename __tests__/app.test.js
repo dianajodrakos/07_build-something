@@ -6,6 +6,12 @@ const Cry = require('../lib/models/Cry.js');
 
 const currentDate = new Date().toISOString().slice(0, 10);
 
+jest.mock('twilio', () => () => ({
+  messages: {
+    create: jest.fn(),
+  },
+}));
+
 describe('routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -14,7 +20,7 @@ describe('routes', () => {
   it('POSTS a new cry', async () => {
     const cry = {
       name: 'DJ',
-      cry: true,
+      cry: false,
     };
 
     const res = await request(app)
